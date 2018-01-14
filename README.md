@@ -5,15 +5,18 @@ Light Transport Entertainment's C/C++ coding guidelines.
 ## Language version
 
 C++11 as a basis.
-It would be better that codes can be compiled with C++03 compiler.
+
+It would be better codes can be compiled with C++03 compiler(to support rather old compiler and emerging platform which does not support C++11 feature yet: e.g. RISC-V based embedded processor)
+
+Example project is available as NanoRT ( https://github.com/lighttransport/nanort )
 
 ## Platforms and compilers
 
-Code shuld be portable and cross-platform and as much as possible.
+Code shuld be portable and cross-platform as much as possible.
 
 ### Platform
 
-Unixish system as a first class.
+Unixish system as a first citizen. Windows and Android/iOS second.
 
 * Linux 64bit(Ubuntu 16.04 or later)
 * macOS sierra or later
@@ -23,17 +26,17 @@ Unixish system as a first class.
 * x86
 * ARM
 * RISC-V
+* JIT system(e.g. clang/LLVM JIT)
 
 ### Compilers
 
 * gcc
 * clang
-* MinGW
-* MSC(Visual Studio 2015 or later)
+* MinGW, MSC(Visual Studio 2015 or later)
 
-## Comlier flags
+## Complier flags
 
-* clang : Use `-Weverything -Werror -Wno-padded` and suppress all warning as much as possible
+* clang : Use `-Weverything -Werror -Wno-padded` as a basis and suppress all warning as much as possible
 * MSC : Use `/W4`
 
 ### Memory management
@@ -56,15 +59,15 @@ Simple, easy-to-hack, easy-to-embed as much as possible(e.g. do not create compi
 
 ## Build tools
 
-* premake5
 * cmake
+* premake5 
 * Makefile
 * ninja
 
 ## Dependency
 
 * **NO BOOST** (except for `nanogi` project)
-* Less external project dependency as much as possible(STL only preferred)
+* Less external project dependency as much as possible(C++ STL only or NanoSTL only  preferred)
 * Using header-only single C++ library preferred.
 
 ## API, SDK, Specification and Format
@@ -80,6 +83,7 @@ Use cross-platform, de-fact or standalised API/SDK/Specification/Format as much 
 ### Recommended third party libraries
 
 * NanoRT(raytracing kernel) https://github.com/syoyo/tinydngloader
+* NanoSTL https://github.com/lighttransport/nanostl
 * STB(load/save image) https://github.com/nothings/stb
 * ImGui(GUI) https://github.com/ocornut/imgui
 * Nuklear(GUI) https://github.com/vurtun/nuklear
